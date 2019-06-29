@@ -25,7 +25,7 @@ cp -r include/google /usr/include/
 ```
 > 注：最后一行是为了将proto的一些库复制到系统，例如`google/protobuf/any.proto`，如果不复制，编译如果用了里面的库例如Any，会提示：protobuf google.protobuf.Any not found 。
 
-然后命令行输入 `protoc`可以查看帮助。
+然后命令行输入 `protoc`可以查看帮助。  
 
 假设有一个 `.proto`格式的文件，需要编译成其它语言代码，以PHP为例则是：
 ``` bash
@@ -46,18 +46,18 @@ $ protoc | grep "=OUT_DIR"
   --ruby_out=OUT_DIR          Generate Ruby source file.
 ```
 
-后面有示例说明。
+后面有示例说明。  
 
-**golang 代码编译支持** 
-`protoc --help` 并没有`--go_out`参数说明， 如需编译golang目标代码，请执行以下步骤:
+**golang 代码编译支持**   
+`protoc --help` 并没有`--go_out`参数说明， 如需编译golang目标代码，请执行以下步骤:  
 
 1、安装golang环境：`yum install golang`，其它系统查看 https://studygolang.com/dl (已安装请跳过) 
-2、`go get github.com/golang/protobuf/protoc-gen-go`
+2、`go get github.com/golang/protobuf/protoc-gen-go`；    
 3、复制扩展工具到`/usr/bin`:
 ``` bash
 cp `go env|grep 'GOPATH'|sed -e 's/GOPATH="//' -e 's/"//'`/bin/protoc-gen-go /usr/bin/
 ```
-4、编译go目标代码: `protoc --go_out=./go *.proto`
+4、编译go目标代码: `protoc --go_out=./go *.proto`。  
 
 ### PHP扩展安装
 
@@ -65,7 +65,7 @@ php可以安装c扩展版本或者纯php代码版本。
 
 #### C扩展版本
 
-1、下载扩展源码： 
+1、下载扩展源码：   
 ``` bash
 wget https://pecl.php.net/get/protobuf-3.8.0.tgz
 tar zxf protobuf-3.8.0.tgz
@@ -80,9 +80,12 @@ sudo make install
 pecl install protobuf-3.8.0
 ```
 
-2、 输入 `php -i|grep php.ini` 查看`php.ini`的路，修改`php.ini`, 增加:  extension=protobuf.so
+2、 输入 `php -i|grep php.ini` 查看`php.ini`的路，修改`php.ini`, 增加:  
+``` ini
+extension=protobuf.so
+```
 
-3、检查是否安装成功：`php --ri protobuf`，安装成功会显示版本号。
+3、检查是否安装成功：`php --ri protobuf`，安装成功会显示版本号。  
 
 ## 运行示例
 
